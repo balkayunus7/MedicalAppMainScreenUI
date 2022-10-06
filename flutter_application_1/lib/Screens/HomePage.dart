@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:flutter_application_1/CategoryCard.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -138,16 +139,33 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 35),
             Container(
-              height: 70,
-              color: Colors.red,
+              height: 60,
               child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: const [
+                  CategoryCard(),
+                  CategoryCard(),
+                  CategoryCard(),
+                  CategoryCard(),
+                ],
+              ),
+            ),
+            const SizedBox(height: 50),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    color: Colors.deepPurple,
-                    child: Row(children: [
-                      Text("zdvhvhdxf"),
-                    ]),
-                  )
+                  Text(
+                    "Doctor List ",
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: Colors.black, fontWeight: FontWeight.w600),
+                  ),
+                  Text(
+                    "See all ",
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: Colors.black, fontWeight: FontWeight.w600),
+                  ),
                 ],
               ),
             )
