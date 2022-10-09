@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:flutter_application_1/CategoryCard.dart';
+import 'package:flutter_application_1/Products/Products.dart';
+import 'package:flutter_application_1/Cards/CategoryCard.dart';
+import 'package:flutter_application_1/Cards/DoctorCard.dart';
+import 'package:flutter_application_1/pieces/AppBar.dart';
+import 'package:flutter_application_1/Cards/AnimationCard.dart';
+import 'package:flutter_application_1/pieces/SearchBar.dart';
+import 'package:flutter_application_1/pieces/Titles.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -10,6 +15,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final TextUtiliy texts = TextUtiliy();
+  final ColorUtility colors = ColorUtility();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,155 +24,78 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SafeArea(
         child: Column(
           children: [
+            //    APPBAR  //
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Text(
-                          "Hello,",
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.copyWith(color: Colors.black),
-                        ),
-                      ),
-                      Text(
-                        "Yunus Balka",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineSmall
-                            ?.copyWith(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500),
-                      ),
-                    ],
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                        color: Colors.deepPurple[100],
-                        borderRadius: BorderRadius.circular(10)),
-                    child: const Icon(
-                      Icons.person_add_outlined,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
+              child: AppBarWidget(
+                textAppBar1: texts.textAppbar1,
+                textAppBar2: texts.textAppbar2,
+                colorText: colors.colorText,
+                iconColor: colors.colorIcon,
               ),
             ),
             const SizedBox(height: 20),
+            //    AnimationCard   //
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.pink[100],
-                    borderRadius: BorderRadius.circular(14)),
-                child: Padding(
-                  padding: const EdgeInsets.all(30.0),
-                  child: Row(
-                    //image
-                    children: [
-                      Container(
-                        height: 100,
-                        width: 100,
-                        child: Lottie.network(
-                            "https://assets2.lottiefiles.com/packages/lf20_0Drkxs.json"),
-                      ),
-                      const SizedBox(width: 20),
-                      //COntainer texts
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 5),
-                              child: Text(
-                                "How do you feel?",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge
-                                    ?.copyWith(color: Colors.black),
-                              ),
-                            ),
-                            Text(
-                              "Fill out your medical card right now",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(color: Colors.black),
-                            ),
-                            // elevated button
-                            Padding(
-                              padding: const EdgeInsets.only(left: 40, top: 10),
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.deepPurple[300]),
-                                onPressed: () {},
-                                child: const Text(" Get started"),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+              child: AnimationCardWidget(
+                textColor: colors.colorText,
+                urlLottie: texts.urlLottie,
+                textCardSubt: texts.textCardSubt,
+                textCardTitle: texts.textCardTitle,
+                textIconCard: texts.textIconCard,
               ),
             ),
-            // Search Bar
+            //     Search Bar  //
             const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.deepPurple[100],
-                    borderRadius: BorderRadius.circular(10)),
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        prefixIcon: Icon(Icons.search_outlined),
-                        hintText: "How we can help you?"),
-                  ),
-                ),
+              child: SearchBarWidget(
+                textfieldText: texts.textfieldText,
               ),
             ),
             const SizedBox(height: 35),
+            // Category cardların yer aldığı yatayda kaydırılan listview //
             Container(
               height: 60,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: const [
-                  CategoryCard(),
-                  CategoryCard(),
-                  CategoryCard(),
-                  CategoryCard(),
+                children: [
+                  CategoryCard(
+                    textCatCard: texts.textCatCard,
+                  ),
+                  CategoryCard(
+                    textCatCard: texts.textCatCard,
+                  ),
+                  CategoryCard(
+                    textCatCard: texts.textCatCard,
+                  ),
+                  CategoryCard(
+                    textCatCard: texts.textCatCard,
+                  ),
                 ],
               ),
             ),
             const SizedBox(height: 50),
+            //   Doctor List ve See all başlıkları  //
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Doctor List ",
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: Colors.black, fontWeight: FontWeight.w600),
-                  ),
-                  Text(
-                    "See all ",
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: Colors.black, fontWeight: FontWeight.w600),
-                  ),
+              child: Titles(
+                textTitle1: texts.textTitle1,
+                textTitle2: texts.textTitle2,
+              ),
+            ),
+            const SizedBox(height: 40),
+            // Doctor Card Widgetlarını Sıralıycak Listview
+            Expanded(
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: const [
+                  DoctorCardWidget(),
+                  DoctorCardWidget(),
+                  DoctorCardWidget(),
+                  DoctorCardWidget(),
+                  DoctorCardWidget(),
                 ],
               ),
             )
