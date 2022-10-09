@@ -8,7 +8,7 @@ import 'package:flutter_application_1/pieces/SearchBar.dart';
 import 'package:flutter_application_1/pieces/Titles.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -17,16 +17,18 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final TextUtiliy texts = TextUtiliy();
   final ColorUtility colors = ColorUtility();
+  final _PaddingUtility padding = _PaddingUtility();
+  final _ContSizes sizes = _ContSizes();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: colors.colorScaff,
       body: SafeArea(
         child: Column(
           children: [
             //    APPBAR  //
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
+              padding: padding.appBarPadding,
               child: AppBarWidget(
                 textAppBar1: texts.textAppbar1,
                 textAppBar2: texts.textAppbar2,
@@ -37,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 20),
             //    AnimationCard   //
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
+              padding: padding.animCarBarPadding,
               child: AnimationCardWidget(
                 textColor: colors.colorText,
                 urlLottie: texts.urlLottie,
@@ -49,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
             //     Search Bar  //
             const SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
+              padding: padding.searchBarPadding,
               child: SearchBarWidget(
                 textfieldText: texts.textfieldText,
               ),
@@ -57,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 35),
             // Category cardların yer aldığı yatayda kaydırılan listview //
             Container(
-              height: 60,
+              height: sizes.catCardHeight,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
@@ -79,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 50),
             //   Doctor List ve See all başlıkları  //
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: padding.listTitlepadding,
               child: Titles(
                 textTitle1: texts.textTitle1,
                 textTitle2: texts.textTitle2,
@@ -90,12 +92,22 @@ class _MyHomePageState extends State<MyHomePage> {
             Expanded(
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: const [
-                  DoctorCardWidget(),
-                  DoctorCardWidget(),
-                  DoctorCardWidget(),
-                  DoctorCardWidget(),
-                  DoctorCardWidget(),
+                children: [
+                  DoctorCardWidget(
+                    textDoctor1: texts.textDoctor1,
+                    textDoctor2: texts.textDoctor2,
+                    textDocPoint: texts.textDocPoint,
+                  ),
+                  DoctorCardWidget(
+                    textDoctor1: texts.textDoctor1,
+                    textDoctor2: texts.textDoctor2,
+                    textDocPoint: texts.textDocPoint,
+                  ),
+                  DoctorCardWidget(
+                    textDoctor1: texts.textDoctor1,
+                    textDoctor2: texts.textDoctor2,
+                    textDocPoint: texts.textDocPoint,
+                  ),
                 ],
               ),
             )
@@ -104,4 +116,24 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
+
+//  Padding only this dart files
+class _PaddingUtility {
+  final EdgeInsets appBarPadding = const EdgeInsets.symmetric(horizontal: 25);
+  final EdgeInsets animCarBarPadding =
+      const EdgeInsets.symmetric(horizontal: 25);
+
+  final EdgeInsets searchBarPadding =
+      const EdgeInsets.symmetric(horizontal: 25);
+  final EdgeInsets listTitlepadding =
+      const EdgeInsets.symmetric(horizontal: 10);
+}
+
+// Container  Sizes
+class _ContSizes {
+  final double catCardHeight = 60;
+  final double width = 130;
+  final double iconSizeDoc = 60;
+  final double iconSizeStar = 17;
 }

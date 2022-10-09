@@ -1,67 +1,113 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_application_1/Products/Products.dart';
 
-class DoctorCardWidget extends StatelessWidget with _ContSizes {
+class DoctorCardWidget extends StatelessWidget
+    with _ContSizes, _PaddingUtility {
   DoctorCardWidget({
     super.key,
+    required this.textDoctor1,
+    required this.textDoctor2,
+    required this.textDocPoint,
   });
+  //  Classlara Ulaşmak için nesne //
+  final String textDoctor1;
+  final String textDoctor2;
+  final String textDocPoint;
+  //  Dışarıdan atanacak değerler (çağrıldğı yerde) //
+  ColorUtility colors = ColorUtility();
+  BorderUtilty borders = BorderUtilty();
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 25, bottom: 80),
+      padding: contOuterPadding,
       child: Container(
-          decoration: BoxDecoration(
-            color: Colors.deepPurple[100],
-            borderRadius: BorderRadius.circular(10),
-          ),
+          decoration: contBoxDec(),
           height: height,
           width: width,
           child: Column(
             children: [
-              const Padding(
-                padding: EdgeInsets.only(
-                  top: 12,
-                  bottom: 12,
-                ),
-                child: Icon(FontAwesomeIcons.digitalOcean, size: 60),
-              ),
+              // Doctor asseti ya da iconu ekleme
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 27),
+                padding: columnPadding,
+                child: Icon(FontAwesomeIcons.digitalOcean, size: iconSizeDoc),
+              ),
+              // Row Açıp star iconu ve pointi ekleme
+              Padding(
+                padding: rowPadding,
                 child: Row(
                   children: [
-                    const Icon(
+                    //  Star Icon
+                    Icon(
                       FontAwesomeIcons.starHalfStroke,
-                      color: Colors.white,
-                      size: 17,
+                      color: colors.colorIconDoc,
+                      size: iconSizeStar,
                     ),
                     const SizedBox(width: 10),
+                    // Doctor Point
                     Text(
-                      "4.9",
+                      textDocPoint,
                       style: Theme.of(context).textTheme.titleLarge,
                     )
                   ],
                 ),
               ),
               const SizedBox(height: 8),
+              //  Doctor Texts
               Text(
-                "Dr. Arlene MCcoy",
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Colors.black, fontWeight: FontWeight.w500),
+                textDoctor1,
+                style: textTheme1(context),
               ),
               const SizedBox(height: 5),
               Text(
-                "Theparist ,7 y. e.",
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.black, fontWeight: FontWeight.w400),
+                textDoctor2,
+                style: textTheme2(context),
               ),
             ],
           )),
     );
   }
+
+// Text Themes
+  TextStyle? textTheme2(BuildContext context) {
+    return Theme.of(context)
+        .textTheme
+        .bodyMedium
+        ?.copyWith(color: colors.colorText, fontWeight: FontWeight.w400);
+  }
+
+  TextStyle? textTheme1(BuildContext context) {
+    return Theme.of(context)
+        .textTheme
+        .bodyLarge
+        ?.copyWith(color: colors.colorText, fontWeight: FontWeight.w500);
+  }
+
+// Box decoration for card
+  BoxDecoration contBoxDec() {
+    return BoxDecoration(
+      color: colors.colorBoxDeco,
+      borderRadius: borders.appIconRadius,
+    );
+  }
 }
 
+// Container and Icon Sizes
 class _ContSizes {
   final double height = 170;
   final double width = 130;
+  final double iconSizeDoc = 60;
+  final double iconSizeStar = 17;
+}
+
+// Padding only this dart files
+class _PaddingUtility {
+  final EdgeInsets contOuterPadding =
+      const EdgeInsets.only(left: 25, bottom: 80);
+  final EdgeInsets columnPadding = const EdgeInsets.only(
+    top: 12,
+    bottom: 12,
+  );
+  final EdgeInsets rowPadding = const EdgeInsets.symmetric(horizontal: 27);
 }
