@@ -1,2 +1,3 @@
 # MedicalAppMainScreenUI
-![kopya](https://user-images.githubusercontent.com/98759759/195077494-52d02bfe-0ce8-4fa5-8a2d-7f62ab398609.jpg)
+
+![kopya2](https://user-images.githubusercontent.com/98759759/195077649-28576834-38aa-4471-a5a3-8f041015b3c8.jpg)
