@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:flutter_application_1/Products/Products.dart';
+import 'package:flutter_application_1/Products/Colors.dart';
 
 class CategoryCard extends StatelessWidget with _PaddingUtility {
   CategoryCard({

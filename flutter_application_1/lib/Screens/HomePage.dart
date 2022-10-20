@@ -6,6 +6,7 @@ import 'package:flutter_application_1/pieces/AppBar.dart';
 import 'package:flutter_application_1/Cards/AnimationCard.dart';
 import 'package:flutter_application_1/pieces/SearchBar.dart';
 import 'package:flutter_application_1/pieces/Titles.dart';
+import 'package:flutter_application_1/Products/Colors.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({super.key});

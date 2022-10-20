@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Products/Products.dart';
 import 'package:lottie/lottie.dart';
+import 'package:flutter_application_1/Products/Colors.dart';
 
 class AnimationCardWidget extends StatelessWidget
     with _PaddingUtility, _ContSizes {
