@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Products/Products.dart';
+import 'package:flutter_application_1/Products/Colors.dart';
+
 
 // ignore: must_be_immutable
 class AppBarWidget extends StatelessWidget with _PaddingUtility {
