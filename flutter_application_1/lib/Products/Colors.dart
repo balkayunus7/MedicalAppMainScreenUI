@@ -8,4 +8,5 @@ class ColorUtility {
   final Color? colorBoxDeco = Colors.deepPurple[100];
   final Color? colorCardButton = Colors.deepPurple[300];
   final Color? colorAnimCardBack = Colors.pink[100];
+  final Color? color1 = Colors.pink[100];
 }
